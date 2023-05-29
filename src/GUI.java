@@ -65,7 +65,7 @@ public class GUI extends JPanel implements ActionListener {
                     try {
                         while (threadRunning) {
                             resetSong();
-                            Thread.sleep(1300);
+                            Thread.sleep(1495);
                         }
                     } catch (Exception ignored) {
                     }
@@ -109,7 +109,7 @@ public class GUI extends JPanel implements ActionListener {
             input.keyRelease(KeyEvent.VK_Q);
             input.delay(20); // wait a bit longer because hf likes to move the mouse back to the center of the screen for no reason sometimes (so we just move it after that happens)
 
-            input.mouseMove(SCREEN_SIZE.width / 2 + SCREEN_SIZE.width / 16, SCREEN_SIZE.height - SCREEN_SIZE.height / 6 - 5); // brute force estimate of where the button for Tempo Di Borea will be... only tested on 1440p
+            input.mouseMove(SCREEN_SIZE.width / 2 + SCREEN_SIZE.width / 16, SCREEN_SIZE.height - SCREEN_SIZE.height / 6 - 5); // brute force estimate of where the button for Tempo Di Borea will be... only tested on 1440p (and probably doesn't work on 1080p)
             input.delay(3);
             input.mousePress(InputEvent.BUTTON1_DOWN_MASK); // click once we're there
             input.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
