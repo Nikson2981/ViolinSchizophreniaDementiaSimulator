@@ -10,6 +10,8 @@ import java.awt.event.*;
 /**
  * @author Nikki
  * @since 2023.28.05
+ * 
+ * it just clicks things occasionally
  */
 public class GUI extends JPanel implements ActionListener {
 
@@ -65,7 +67,7 @@ public class GUI extends JPanel implements ActionListener {
                     try {
                         while (threadRunning) {
                             resetSong();
-                            Thread.sleep(1495);
+                            Thread.sleep(1495); // about the right length? doesn't account for ping obviously; how could it? (by manually inputting it of course but i don't care to do that)
                         }
                     } catch (Exception ignored) {
                     }
@@ -81,7 +83,7 @@ public class GUI extends JPanel implements ActionListener {
                 doOnceKeycode = keyPress.getKeyCode();
                 hotkeyField.setText(NativeKeyEvent.getKeyText(doOnceKeycode));
 
-                //"Execute (" + NativeKeyEvent.getKeyText(hotkeyCode) + ")"
+                //"Execute (" + NativeKeyEvent.getKeyText(hotkeyCode) + ")" // don't know what this is or how it got here
 
                 waitingForHotkey = false;
             }
@@ -101,7 +103,10 @@ public class GUI extends JPanel implements ActionListener {
 
     private void resetSong() {
         try {
-            input.mousePress(InputEvent.BUTTON3_DOWN_MASK); // button3 == mouse2 fsr
+
+            // click, press q, start song. it's different now but i'm not updating this
+            
+            input.mousePress(InputEvent.BUTTON3_DOWN_MASK); // button3 == mouse2
             input.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
             input.delay(10);
 
@@ -109,7 +114,7 @@ public class GUI extends JPanel implements ActionListener {
             input.keyRelease(KeyEvent.VK_Q);
             input.delay(20); // wait a bit longer because hf likes to move the mouse back to the center of the screen for no reason sometimes (so we just move it after that happens)
 
-            input.mouseMove(SCREEN_SIZE.width / 2 + SCREEN_SIZE.width / 16, SCREEN_SIZE.height - SCREEN_SIZE.height / 6 - 5); // brute force estimate of where the button for Tempo Di Borea will be... only tested on 1440p (and probably doesn't work on 1080p)
+            input.mouseMove(SCREEN_SIZE.width / 2 + SCREEN_SIZE.width / 16, SCREEN_SIZE.height - SCREEN_SIZE.height / 6 - 5); // yucky brute force estimation of where the button for Tempo Di Borea will be... only tested on 1440p (and probably doesn't work on 1080p)
             input.delay(3);
             input.mousePress(InputEvent.BUTTON1_DOWN_MASK); // click once we're there
             input.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
